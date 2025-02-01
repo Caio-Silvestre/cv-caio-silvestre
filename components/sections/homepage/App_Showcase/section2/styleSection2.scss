@@ -1,0 +1,198 @@
+.text-enfase{
+ color:  var(--sala-primary-dark, #111111);
+}
+
+/* Container geral */
+.topics-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    overflow: visible;
+  }
+  
+  /* Estilização dos tópicos */
+  .topic {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    z-index: 1;
+    
+    
+  }
+
+  .topic:hover {
+    transform: scale(1.1);
+    z-index: 99;
+  }
+  
+  /* Ícone */
+  .icon {
+    font-size: 32px;
+  }
+  
+  /* Texto do tópico */
+  .text {
+    font-size: 14px;
+    color: #333;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-align: center;
+  }
+
+  .subtext {
+    position: relative;
+    bottom: 0px;
+    font-size: 14px;
+    color: #333;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-align: left;
+    
+  }
+  
+  /* Texto visível */
+  .text.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .dropdowntext {
+    position: relative;
+    width: 25vw;
+    max-height: 80%;
+    overflow-y: auto;
+    color: var(--sala-neutral-normal, #555555);
+    font-size: 14px;
+    padding-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    text-align: left;
+  }
+
+  @media screen and (max-width: 1500px) {
+    .dropdowntext {
+      text-align: center!important;
+    } 
+    .dropdowntextLeft{   
+      right: -40%;
+      top: 10%;
+      background-color: rgba(var(--dropdown-subtext-rgb), 0.9);
+      border: 1px solid rebeccapurple;
+      border-radius: 10px;
+    }
+
+    .dropdowntextRight{   
+      left: -40%;
+      top: 10%;
+      background-color: rgba(var(--dropdown-subtext-rgb), 0.9);
+      border: 1px solid rebeccapurple;
+      border-radius: 10px;
+    }
+  }
+  .dropdowntext::-webkit-scrollbar {
+    width: 12px;              
+  }
+  
+  .dropdowntext::-webkit-scrollbar-track {
+    background: transparent;  
+  }
+  
+  .dropdowntext::-webkit-scrollbar-thumb {
+    background-color: var(--primary);    /* color of the scroll thumb */
+    border-radius: 20px;
+    box-shadow: -1.5px 2px 2px 1px rgba(0,0,0,0.21) inset;
+      /* roundness of the scroll thumb */
+      /* creates padding around scroll thumb */
+  }
+  
+
+  .dropdowntextLeft {
+    display: flex;
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  /* Torna visível o dropdown */
+  .dropdowntext.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  
+  
+  .topic-id {
+    opacity: 1;
+    transition: opacity 0.8s ease;
+  }
+  
+  /* Quando o ID está oculto */
+  .topic-id.hidden {
+    opacity: 0; /* Torna invisível */
+    pointer-events: none; /* Impede interação */
+  }
+  
+  .innerRigth {
+    display: flex  ;
+    flex-direction: row-reverse;
+  }
+  
+  .contentRigth {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .react{
+    position: relative;
+    top: -5%;
+    left: 10%;
+  }
+
+  .sql{
+    position: relative;
+    top: -22%;
+    left: 30%;
+  }
+  .css{
+    position: relative;
+    top: -30%;
+    left: 30%
+  }
+  .laravel{
+    position: relative;
+    top: -45%;
+    left: 10%;
+  }
+
+  .scrum{
+    position: relative;
+    top: -5%;
+    left:30%
+  }
+
+  .nodejs{
+    position: relative;
+    top: -22%;
+    left: 10%;
+  }
+  
+  .github{
+    position: relative;
+    top: -30%;
+    left: 10%;
+  }
+
+  .npm{
+    position: relative;
+    top: -45%;
+    left: 20%;
+  }
+  
