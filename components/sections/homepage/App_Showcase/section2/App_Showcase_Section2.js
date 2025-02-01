@@ -92,17 +92,16 @@ export default function App_Showcase_Section2() {
     },
   ];
 
-  // Alterna automaticamente os textos em intervalos de tempo
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (!stopAnimation) {
-  //       setVisibleTopic((prev) =>
-  //         prev === topics.length - 1 ? 0 : (prev || 0) + 1
-  //       );
-  //     }
-  //   }, 4000); // Mostra um texto a cada 3 segundos
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!stopAnimation) {
+        setVisibleTopic((prev) =>
+          prev === topics.length - 1 ? 0 : (prev || 0) + 1
+        );
+      }
+    }, 4000); // Mostra um texto a cada 3 segundos
+    return () => clearInterval(interval);
+  }, [stopAnimation]);
   return (
     <>
       <section className="section spdt two_circle">
@@ -141,7 +140,7 @@ export default function App_Showcase_Section2() {
                         setStopAnimation(true), setVisibleTopic(index)
                       )}
                       onMouseLeave={() => (
-                        setStopAnimation(true), setVisibleTopic(null)
+                        setStopAnimation(false), setVisibleTopic(null)
                       )}
                     >
                       <div className="inner innerRigth">
@@ -260,7 +259,7 @@ export default function App_Showcase_Section2() {
                         setVisibleTopic(index), setStopAnimation(true)
                       )}
                       onMouseLeave={() => (
-                        setVisibleTopic(null), setStopAnimation(true)
+                        setVisibleTopic(null), setStopAnimation(false)
                       )}
                     >
                       <div className="inner">
