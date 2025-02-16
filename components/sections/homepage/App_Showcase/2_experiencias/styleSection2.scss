@@ -196,3 +196,47 @@
     left: 20%;
   }
   
+
+  @media (max-width: 999px) {
+    .grid_thecs_mobile{
+        height: 100%;
+        max-width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+    }
+
+    .icon-box {
+      margin: 0% 3%;
+    }
+
+    .topic{
+      min-width: 60%;
+    }
+
+    .dropdown {
+      text-align: center!important;
+      color:  var(--sala-primary-dark, #111111);
+      background-color: rgba(var(--dropdown-subtext-rgb), 0.9);
+      border: 1px solid rebeccapurple;
+      border-radius: 10px;
+      z-index: 10!important;
+    }
+    .dropdown-text{
+      color:  var(--sala-primary-dark, #111111);
+      
+      
+    }
+    .icon {
+      color: rebeccapurple;
+    }
+    
+}
+
+/* Mobile (abaixo de 600px) */
+@media (max-width: 599px) {
+ 
+  .topic{
+    min-width: 60%;
+  }
+}

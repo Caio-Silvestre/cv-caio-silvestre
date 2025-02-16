@@ -15,7 +15,7 @@ export default function App_Showcase_Section1() {
   return (
     <>
       <section
-        className="section background-overlay background-full pdt180 oveflow-hidden"
+        className="section background-overlay background-full pdt180 pdb180 oveflow-hidden"
         // style={{ backgroundImage: "url(/assets/images/hero-01.jpg)" }}
       >
         <video
@@ -26,7 +26,7 @@ export default function App_Showcase_Section1() {
           loop
           muted
         />
-        <div className="container">
+        <div className="container" id="container_apresentacao">
           <div className="row">
             <div className="col-lg-6">
               <div className="heading heading-alway-white wow animate__animated animate__fadeInLeft ">
@@ -49,7 +49,7 @@ export default function App_Showcase_Section1() {
               </div>
             </div>
             <div className="col-lg-6 ">
-              <div className="images align-right layout-01 lg-mt32">
+              <div className="images align-right layout-01 mb-5 mt-md-0 mt-lg-5">
                 <div className="align-center">
                   <div
                     className="inner"

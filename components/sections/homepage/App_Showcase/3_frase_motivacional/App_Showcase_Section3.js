@@ -13,8 +13,8 @@ export default function App_Showcase_Section3() {
                 tamanho original. "
               </h2>
               <h3
-                className="w-100 mt-5 text-end "
-                style={{ paddingRight: "20%" }}
+                className="heading-subtitle text-end"
+                style={{ width: "80%" }}
               >
                 - Albert Einstein
               </h3>
