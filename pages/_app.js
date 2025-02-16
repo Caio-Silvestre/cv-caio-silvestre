@@ -9,12 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../public/assets/css/style.css";
-import "../components/sections/homepage/App_Showcase/section2/styleSection2.scss";
-import "../components/sections/homepage/App_Showcase/section1/styleSection1.scss";
-import "../components/sections/homepage/App_Showcase/contato/styleContato.scss";
+import "../components/sections/homepage/App_Showcase/2_experiencias/styleSection2.scss";
+import "../components/sections/homepage/App_Showcase/1_apresentacao/styleSection1.scss";
+import "../components/sections/homepage/App_Showcase/5_contato/styleContato.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SpinnerPiramide from "@/components/elements/spinner";
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);

@@ -1,8 +1,8 @@
 import Layout from "@/components/layout/Layout";
-import App_Showcase_Section1 from "@/components/sections/homepage/App_Showcase/section1/App_Showcase_Section1";
-import App_Showcase_Section10 from "@/components/sections/homepage/App_Showcase/contato/App_Showcase_Section10";
-import App_Showcase_Section2 from "@/components/sections/homepage/App_Showcase/section2/App_Showcase_Section2";
-import App_Showcase_Section3 from "@/components/sections/homepage/App_Showcase/App_Showcase_Section3";
+import App_Showcase_Section1 from "@/components/sections/homepage/App_Showcase/1_apresentacao/App_Showcase_Section1";
+import App_Showcase_Section10 from "@/components/sections/homepage/App_Showcase/5_contato/App_Showcase_Section10";
+import App_Showcase_Section2 from "@/components/sections/homepage/App_Showcase/2_experiencias/App_Showcase_Section2";
+import App_Showcase_Section3 from "@/components/sections/homepage/App_Showcase/3_frase_motivacional/App_Showcase_Section3";
 import App_Showcase_Section4 from "@/components/sections/homepage/App_Showcase/App_Showcase_Section4";
 
 import Link from "next/link";
@@ -44,7 +44,7 @@ export default function HomeAppShowcase() {
             }}
           >
             {" "}
-            Bem-vindo.
+            Bem vindo.
             <small>clique para entrar.</small>
           </h1>
         </div>
