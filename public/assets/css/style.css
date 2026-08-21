@@ -337,6 +337,16 @@ animation: border 4s linear infinite ;
 .bg_black {
   background-color: var(--sala-neutral-white);
 }
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #12001f;
+}
+
 .welcometext{
   justify-content: center;
   text-align: center;

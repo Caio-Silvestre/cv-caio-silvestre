@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "../../../../../hooks/useIsLessThan999px";
 import Mobile from "./Mobile";
+import { topics } from "./topics";
 
 export default function App_Showcase_Section2() {
   const [visibleTopic, setVisibleTopic] = useState(4);
   const [stopAnimation, setStopAnimation] = useState(false);
+  const mid = Math.ceil(topics.length / 2);
 
   const isMobile = useIsMobile();
   const BgVideo = () => {
@@ -29,72 +31,6 @@ export default function App_Showcase_Section2() {
       />
     );
   };
-  const topics = [
-    {
-      id: 1,
-      icon: "lab la-react",
-      text: "React.jsx",
-      subtext:
-        "Experiência com interfaces dinâmicas e responsivas,  sistemas ERP, atualização de pacotes, manutenção de aplicações e integração com sistemas omnichannel.",
-      className: "react",
-    },
-    {
-      id: 2,
-      icon: "las la-database",
-      text: "SQL",
-      subtext:
-        "Criação e otimização de queries para features novas, resolução de inconsistências em dados e manutenção de integridade em bases relacionais.",
-      className: "sql",
-    },
-    {
-      id: 3,
-      icon: "lab la-css3",
-      text: "CSS",
-      subtext:
-        "Experiência com animações, design responsivo e adaptação de layouts; resolução de bugs complexos e uso avançado de pré-processadores como SASS.",
-      className: "css",
-    },
-    {
-      id: 4,
-      icon: "lab la-laravel",
-      text: "PHP Laravel",
-      subtext:
-        "Desenvolvimento de APIs RESTful robustas, implementação de comandos personalizados, manutenção de sistemas legados e criação de novas funcionalidades.",
-      className: "laravel",
-    },
-    {
-      id: 5,
-      icon: "las la-code-branch",
-      text: "Metodologias Ágeis",
-      subtext:
-        "Experiência com Scrum e Kanban; gestão de tarefas usando Jira e Notion; integração com GitHub, padronização de commits e entregas contínuas.",
-      className: "scrum",
-    },
-    {
-      id: 6,
-      icon: "lab la-node-js",
-      text: "Node.js",
-      subtext:
-        "Desenvolvimento de APIs RESTful com Express.js, criação de endpoints para operações CRUD e integração com sistemas de terceiros.",
-      className: "nodejs",
-    },
-    {
-      id: 7,
-      icon: "lab la-github",
-      text: "GitHub",
-      subtext:
-        "Gerenciamento de branches para organização de funcionalidades; revisão e criação de pull requests; solução de conflitos de merge e automação com GitHub Actions.",
-      className: "github",
-    },
-    {
-      id: 7,
-      icon: "lab la-npm",
-      text: "NPM",
-      subtext:
-        "Experiência na resolução de conflitos de pacotes, atualização de versões em projetos legados e preparação de builds para deploy.",
-      className: "npm",
-    },
-  ];
 
   useEffect(() => {
     if (!isMobile) {
@@ -109,7 +45,7 @@ export default function App_Showcase_Section2() {
       }, 4000); // Mostra um texto a cada 3 segundos
       return () => clearInterval(interval);
     }
-  }, [stopAnimation]);
+  }, [stopAnimation, isMobile]);
 
   const LessThan999px = () => {
     return <Mobile />;
@@ -157,7 +93,7 @@ export default function App_Showcase_Section2() {
                     }}
                   >
                     {topics.map((topic, index) =>
-                      index > 3 ? (
+                      index >= mid ? (
                         <div
                           key={index}
                           className={`animate__animated animate__fadeInRigth icon-box topic ${topic.className} `}
@@ -236,7 +172,7 @@ export default function App_Showcase_Section2() {
                     }}
                   >
                     {topics.map((topic, index) =>
-                      index <= 3 ? (
+                      index < mid ? (
                         <div
                           key={index}
                           className={`animate__animated animate__fadeInRigth icon-box topic ${topic.className} `}

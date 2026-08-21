@@ -15,13 +15,59 @@ import "../components/sections/homepage/App_Showcase/5_contato/styleContato.scss
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const WELCOME_VIDEO_SRC = "/assets/videos/videoBgPurple.webm";
+
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => {
+    let finished = false;
+    let videoReady = false;
+    let minElapsed = false;
+
+    const tryFinish = () => {
+      if (finished || !videoReady || !minElapsed) return;
+      finished = true;
       setLoading(false);
-    }, 1000);
+    };
+
+    // Pré-carrega o vídeo de boas-vindas durante o loader
+    // para ele já estar pronto quando a tela de welcome montar.
+    const video = document.createElement("video");
+    video.muted = true;
+    video.preload = "auto";
+    video.playsInline = true;
+    video.src = WELCOME_VIDEO_SRC;
+    video.load();
+
+    const onReady = () => {
+      videoReady = true;
+      tryFinish();
+    };
+    video.addEventListener("canplaythrough", onReady, { once: true });
+    video.addEventListener("error", onReady, { once: true });
+
+    // Tempo mínimo do loader
+    const minWait = window.setTimeout(() => {
+      minElapsed = true;
+      tryFinish();
+    }, 800);
+
+    // Fallback se o vídeo demorar demais
+    const maxWait = window.setTimeout(() => {
+      videoReady = true;
+      minElapsed = true;
+      tryFinish();
+    }, 2500);
+
+    return () => {
+      window.clearTimeout(maxWait);
+      window.clearTimeout(minWait);
+      video.removeEventListener("canplaythrough", onReady);
+      video.removeEventListener("error", onReady);
+    };
   }, []);
+
   return (
     <>
       {!loading ? (
@@ -30,14 +76,13 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </>
       ) : (
-        <div class="loaderContent">
-          <div class="card">
+        <div className="loaderContent">
+          <div className="card">
             <img
               src="/assets/images/astronautLoader.png"
               alt=""
-              class="image"
+              className="image"
             />
-            {/* <SpinnerPiramide /> */}
             <div className="loading-container">
               <span className="loading-text">C</span>
               <span className="loading-text">a</span>
@@ -53,7 +98,6 @@ export default function App({ Component, pageProps }) {
               <span className="loading-text">.</span>
               <span className="loading-text">.</span>
             </div>
-            {/* <small>Carregando...</small> */}
           </div>
         </div>
       )}

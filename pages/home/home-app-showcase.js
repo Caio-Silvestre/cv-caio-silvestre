@@ -5,77 +5,72 @@ import App_Showcase_Section2 from "@/components/sections/homepage/App_Showcase/2
 import App_Showcase_Section3 from "@/components/sections/homepage/App_Showcase/3_frase_motivacional/App_Showcase_Section3";
 import App_Showcase_Section4 from "@/components/sections/homepage/App_Showcase/App_Showcase_Section4";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+const WELCOME_EXIT_MS = 900;
 
 export default function HomeAppShowcase() {
   const [bgOn, setBgOn] = useState(true);
+  const [leaving, setLeaving] = useState(false);
   const videoRef = useRef(null);
   const titleRef = useRef(null);
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // for smoothly scrolling
-    });
-  };
-
-  const welcomeAnimation = useCallback(() => {
-    scrollToTop();
-  }, []);
 
   useEffect(() => {
-    videoRef.current.playbackRate = 1;
-    const ref = videoRef.current.className;
-    console.log(ref);
-  }, []);
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1;
+    }
+  }, [bgOn]);
 
-  const Welcome = () => {
+  const handleEnter = useCallback(() => {
+    if (!bgOn || leaving) return;
+
+    setLeaving(true);
+    videoRef.current?.classList.add("welcomevideoOut");
+    titleRef.current?.classList.add("welcometextOut");
+
+    window.setTimeout(() => {
+      setBgOn(false);
+      setLeaving(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, WELCOME_EXIT_MS);
+  }, [bgOn, leaving]);
+
+  if (bgOn) {
     return (
-      <>
-        {/* <Link href={'/home'}> */}
-        <div style={{ width: "100%", height: "100%" }}>
-          <h1
-            ref={titleRef}
-            className={`welcometext welcometext_h1`}
-            onClick={() => {
-              videoRef.current.classList.add("welcomevideoOut");
-              titleRef.current.classList.add("welcometextOut");
-              welcomeAnimation();
-            }}
-          >
-            {" "}
-            Bem vindo.
-            <small>clique para entrar.</small>
-          </h1>
-        </div>
+      <div className="welcome-overlay" aria-label="Tela de boas-vindas">
+        <h1
+          ref={titleRef}
+          className="welcometext welcometext_h1"
+          onClick={handleEnter}
+        >
+          Bem vindo.
+          <small>clique para entrar.</small>
+        </h1>
         <video
-          onClick={() => {
-            welcomeAnimation();
-          }}
           ref={videoRef}
-          className={`welcomevideo `}
-          src={"/assets/videos/videoBgPurple.webm"}
+          className="welcomevideo"
+          src="/assets/videos/videoBgPurple.webm"
+          onClick={handleEnter}
           autoPlay
           loop
           muted
+          playsInline
+          preload="auto"
         />
-        {/* </Link> */}
-      </>
+      </div>
     );
-  };
+  }
+
   return (
-    <>
-      {bgOn ? <Welcome /> : null}
-      <Layout
-        headerClass="is-transparent sala-dark-scheme"
-        siteContentClass="pt0"
-      >
-        <App_Showcase_Section1 />
-        <App_Showcase_Section2 />
-        <App_Showcase_Section3 />
-        <App_Showcase_Section4 />
-        <App_Showcase_Section10 />
-      </Layout>
-    </>
+    <Layout
+      headerClass="is-transparent sala-dark-scheme"
+      siteContentClass="pt0"
+    >
+      <App_Showcase_Section1 />
+      <App_Showcase_Section2 />
+      <App_Showcase_Section3 />
+      <App_Showcase_Section4 />
+      <App_Showcase_Section10 />
+    </Layout>
   );
 }
